@@ -79,6 +79,7 @@ void GALAXY_SYSTEM::generateObjects()
 		sign = rand() % 2;
 		mX[i] = static_cast<double> (rand() + 0.0) / (static_cast<double> (RAND_MAX + 0.0)) * mSpaceSize / 2;
 		if (sign) mX[i] *= -1;
+		sign = rand() % 2;
 		mY[i] = static_cast<double> (rand() + 0.0) / (static_cast<double> (RAND_MAX + 0.0)) * mSpaceSize / 2;
 		if (sign) mY[i] *= -1;
 	}
@@ -88,6 +89,7 @@ void GALAXY_SYSTEM::generateObjects()
 		sign = rand() % 2;
 		mVx[i] = static_cast<double> (rand() + 0.0) / (static_cast<double> (RAND_MAX + 0.0)) * mMaxV;
 		if (sign) mVx[i] *= -1;
+		sign = rand() % 2;
 		mVy[i] = static_cast<double> (rand() + 0.0) / (static_cast<double> (RAND_MAX + 0.0)) * mMaxV;
 		if (sign) mVy[i] *= -1;
 	}
@@ -230,6 +232,7 @@ void GALAXY_SYSTEM::mergeObjects()
 		if (!mAlive[i]) continue;
 		for (int j = i + 1; j < mNumOfObjs; ++j)
 		{
+			
 			//bool merge = false;
 			if (!mAlive[j]) continue;
 			// right / left
@@ -339,6 +342,7 @@ void GALAXY_SYSTEM::mergeObjects()
 				}
 			}
 			//if (!merge) continue;
+			
 		}
 	}
 
@@ -364,7 +368,8 @@ If x > halfSpaceSize, set x = -halfSpaceSize;
 void GALAXY_SYSTEM::update()
 {
 	mergeObjects(); // merge objects first if they overlap with each other
-	
+	mFx.clear();
+	mFy.clear();
 	for (int i = 0; i < mNumOfObjs; ++i)
 	{
 		if (!mAlive[i]) continue;
@@ -400,12 +405,12 @@ void GALAXY_SYSTEM::update()
 		//Velocity i
 		mVx[i] = mVx[i] + (mFx[i] / m)*mTimeStep;
 		mVy[i] = mVy[i] + (mFy[i] / m)*mTimeStep;
-		/*
+		
 		if (mVx[i] >mMaxV) mVx[i] -= mMaxV;
 		if (mVx[i] < (-1)*mMaxV) mVx[i] += mMaxV;
 		if (mVy[i] >mMaxV) mVy[i] -= mMaxV;
 		if (mVy[i] < ((-1)*mMaxV)) mVy[i] += mMaxV;
-		*/
+		
 		}
 	/*
 	for (int i = 0; i < mNumOfObjs; i++)
