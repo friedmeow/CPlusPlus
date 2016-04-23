@@ -1,0 +1,19 @@
+1.
+Y = f(x)
+
+(x0,y0)
+f(x) >= 0 && f(x)>y>0
+
+f(x) < y <=0
+
+2.
+F -> a -> v -> x
+Double loop i = 0
+J = i + 1;
+mVx[i] = mVx[i]* mass + mVx[j] * mass
+mMass[i] += mMass[j]
+mVx[i] = mVx[i] / mMass[i];
+mVy[j] = mVy[j] / mMass[j];
+unit vector  Pj – Pi / 
+reset array -> 0
+Bitmap, OFFSET One dimensional -> Two dimensional
